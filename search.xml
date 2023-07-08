@@ -98,20 +98,22 @@
 <pre><code>[1 2 3 4 5]
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span>*</span><br><span class="line">n2=array(a)</span><br><span class="line"><span class="built_in">print</span>(n2)</span><br></pre></td></tr></table></figure>
 <pre><code>[1 2 3 4 5]
-</code></pre><h2 id="2-创建数组的方法"><a href="#2-创建数组的方法" class="headerlink" title="2.创建数组的方法"></a>2.创建数组的方法</h2><h4 id="array函数-np-array"><a href="#array函数-np-array" class="headerlink" title="array函数(np.array())"></a>array函数(np.array())</h4><p> $numpy.array( object ,dtype ,copy ,order ,subok ,ndmin )$</p>
+</code></pre><h2 id="2-使用Numpy创建数组的方法"><a href="#2-使用Numpy创建数组的方法" class="headerlink" title="2.使用Numpy创建数组的方法"></a>2.使用Numpy创建数组的方法</h2><h3 id="array函数-np-array"><a href="#array函数-np-array" class="headerlink" title="array函数(np.array())"></a>array函数(np.array())</h3><p> $numpy.array( object ,dtype ,copy ,order ,subok ,ndmin )$</p>
+<p> 参数列表:</p>
 <p> $dtype$:数据类型</p>
 <p> $copy$:复制的深浅问题</p>
 <p> $order$:创建数组的样式$(K,A,C,F)$$C$为行方向,$F$为列方向,$A$为任意方向<br> (默认)</p>
 <p> $subok$:如果为$True$,则将传递子类,否则,返回的数组将被强制为基类数组</p>
 <p> $namin$:生成数组的最小维数,不足就在外面套方括号</p>
-<p>  <em>关于轴的概念($axis$)</em></p>
+<p><img src="./3D-Banner.jpg" alt="jupyter"></p>
+<p>  <em>引申关于轴的概念($axis$)</em></p>
 <p>  一维数组 $axis$=0 (列)</p>
 <p>  二维数组 $axis$=0,1 (行,列)</p>
 <p>  三维数组 $axis$=0,1,2 $(z,y,x)$</p>
-<p>  $ndim$获取轴数，以此类推</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#dtype示例</span></span><br><span class="line">n2=array(n1,dtype=<span class="built_in">complex</span>)</span><br><span class="line"><span class="built_in">print</span>(n2)</span><br></pre></td></tr></table></figure>
+<p>  使用$ndim$获取轴数！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#dtype示例</span></span><br><span class="line">n2=array(n1,dtype=<span class="built_in">complex</span>)<span class="comment">#将数据类型设置为复数</span></span><br><span class="line"><span class="built_in">print</span>(n2)</span><br></pre></td></tr></table></figure>
 <pre><code>[1.+0.j 2.+0.j 3.+0.j 4.+0.j 5.+0.j]
-</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#copy示例</span></span><br><span class="line">n3=np.array(n1,copy=<span class="literal">True</span>)</span><br><span class="line">n4=np.array(n1,copy=<span class="literal">False</span>)<span class="comment">#注意这里是对array对象的复制</span></span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n3)</span><br><span class="line"><span class="built_in">print</span>(n4)</span><br><span class="line">n1[<span class="number">0</span>]=<span class="number">9</span></span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n3) <span class="comment">#copy=True,不会随着改变</span></span><br><span class="line"><span class="built_in">print</span>(n4) <span class="comment">#copy=False,会随着改变</span></span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#copy示例</span></span><br><span class="line">n3=np.array(n1,copy=<span class="literal">True</span>)</span><br><span class="line">n4=np.array(n1,copy=<span class="literal">False</span>)<span class="comment">#注意这里是对array对象的复制</span></span><br><span class="line"><span class="comment"># copy的意思是副本，可以理解为&quot;是否创建副本&quot;</span></span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n3)</span><br><span class="line"><span class="built_in">print</span>(n4)</span><br><span class="line">n1[<span class="number">0</span>]=<span class="number">9</span></span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n3) <span class="comment">#copy=True,不会随着改变</span></span><br><span class="line"><span class="built_in">print</span>(n4) <span class="comment">#copy=False,会随着改变</span></span><br></pre></td></tr></table></figure>
 <pre><code>[1 2 3 4 5]
 [1 2 3 4 5]
 [1 2 3 4 5]
@@ -122,12 +124,12 @@
 <pre><code>[1 2 3 4]
 [1 2 3 4]
 [[1 2 3 4]]
-</code></pre><h4 id="特殊类型数组"><a href="#特殊类型数组" class="headerlink" title="特殊类型数组"></a>特殊类型数组</h4><p>1.随机数数组($np.empty()$)(可用$dtype$指定生成类型)</p>
+</code></pre><h3 id="特殊类型数组"><a href="#特殊类型数组" class="headerlink" title="特殊类型数组"></a>特殊类型数组</h3><p>1.随机数数组($np.empty()$)(可用$dtype$指定生成类型)</p>
 <p>2.全零数组($np.zeros()$)(默认浮点型)</p>
 <p>3.全一数组($np.ones()$)(默认浮点型)</p>
 <p>4.以指定值填充的数组($np.full()$)</p>
 <p>5.创建对角矩阵($np.diag()$)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#随机数数组 np.empty()</span></span><br><span class="line"><span class="comment">#维数以列表形式输入！</span></span><br><span class="line">n=np.empty([<span class="number">2</span>,<span class="number">3</span>])<span class="comment">#行数+列数</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line">n=np.empty([<span class="number">4</span>,<span class="number">3</span>],dtype=<span class="built_in">int</span>)<span class="comment">#可通过dtype类型限制</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#随机数数组 np.empty()</span></span><br><span class="line"><span class="comment">#维数以列表形式输入！</span></span><br><span class="line">n=np.empty([<span class="number">2</span>,<span class="number">3</span>])<span class="comment">#行数+列数</span></span><br><span class="line"><span class="comment"># 默认为浮点数类型</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line">n=np.empty([<span class="number">4</span>,<span class="number">3</span>],dtype=<span class="built_in">int</span>)<span class="comment">#可通过dtype类型限制</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
 <pre><code>[[0. 0. 0.]
  [0. 0. 0.]]
 [[0 0 0]
@@ -146,20 +148,20 @@
  [1. 1. 1. 1.]
  [1. 1. 1. 1.]]
 [1. 1. 1. 1.]
-</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#full数组 np.full()</span></span><br><span class="line"><span class="comment">#维数以元组表示</span></span><br><span class="line">n = np.full((<span class="number">3</span>,<span class="number">3</span>), <span class="number">8</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="comment">#若创建方阵也可用列表</span></span><br><span class="line">n = np.full((<span class="number">4</span>,<span class="number">4</span>),[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#full数组 np.full()</span></span><br><span class="line"><span class="comment">#维数以元组表示</span></span><br><span class="line">n = np.full((<span class="number">3</span>,<span class="number">3</span>), <span class="number">8</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="comment">#若创建相同行元素的矩阵</span></span><br><span class="line">n = np.full((<span class="number">4</span>,<span class="number">5</span>),[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
 <pre><code>[[8 8 8]
  [8 8 8]
  [8 8 8]]
-[[1 2 3 4]
- [1 2 3 4]
- [1 2 3 4]
- [1 2 3 4]]
+[[1 2 3 4 5]
+ [1 2 3 4 5]
+ [1 2 3 4 5]
+ [1 2 3 4 5]]
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#对角矩阵 np.diag([])</span></span><br><span class="line">n=np.diag([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
 <pre><code>[[1 0 0 0]
  [0 2 0 0]
  [0 0 3 0]
  [0 0 0 4]]
-</code></pre><h4 id="由数值范围创建数组"><a href="#由数值范围创建数组" class="headerlink" title="由数值范围创建数组"></a>由数值范围创建数组</h4><p>1.由范围($np.arange()$)</p>
+</code></pre><h3 id="由数值范围创建数组"><a href="#由数值范围创建数组" class="headerlink" title="由数值范围创建数组"></a>由数值范围创建数组</h3><p>1.由范围($np.arange()$)</p>
 <p>2.等差数列的创建($np.linspace()$)</p>
 <p>3.等比数列的创建($np.logspace()$)</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 由范围 np.arange()</span></span><br><span class="line"><span class="comment"># (起始，终止，步长)</span></span><br><span class="line">n=np.arange(<span class="number">1</span>,<span class="number">12</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
@@ -168,7 +170,7 @@
 <pre><code>[ 7500.  8000.  8500.  9000.  9500. 10000.]
 [7500.         7916.66666667 8333.33333333 8750.         9166.66666667
  9583.33333333]
-</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#等比数列的创建 np.logspace()</span></span><br><span class="line">n = np.logspace(<span class="number">0</span>,<span class="number">63</span>,<span class="number">64</span>,base=<span class="number">2</span>,dtype=<span class="string">&#x27;uint64&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(n.reshape(<span class="number">8</span>,<span class="number">8</span>))</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#等比数列的创建 np.logspace()</span></span><br><span class="line">n = np.logspace(<span class="number">0</span>,<span class="number">63</span>,<span class="number">64</span>,base=<span class="number">2</span>,dtype=<span class="string">&#x27;uint64&#x27;</span>)<span class="comment"># 不然会爆int</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(n.reshape(<span class="number">8</span>,<span class="number">8</span>))</span><br></pre></td></tr></table></figure>
 <pre><code>[                  1                   2                   4
                    8                  16                  32
                   64                 128                 256
@@ -215,30 +217,30 @@
  [  72057594037927936  144115188075855872  288230376151711744
    576460752303423488 1152921504606846976 2305843009213693952
   4611686018427387904 9223372036854775808]]
-</code></pre><h4 id="随机数组的创建-依靠random模块"><a href="#随机数组的创建-依靠random模块" class="headerlink" title="随机数组的创建(依靠random模块)"></a>随机数组的创建(依靠random模块)</h4><p>1.创建$0-1$之间的随机数($np.random.rand()$)</p>
+</code></pre><h3 id="随机数组的创建-random模块"><a href="#随机数组的创建-random模块" class="headerlink" title="随机数组的创建(random模块)"></a>随机数组的创建(random模块)</h3><p>1.创建$0-1$之间的随机数($np.random.rand()$)</p>
 <p>2.从正态分布中返回随机生成的数组($np.random.randn()$)</p>
 <p>3.生成一定范围内的随机数组($np.random.randint()$)</p>
 <p>4.生成正态分布的随机数($np.random.normal()$)</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建0-1之间的随机数</span></span><br><span class="line">n=np.random.rand(<span class="number">5</span>)<span class="comment">#维数</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line">n=np.random.rand(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
-<pre><code>[0.22493824 0.76862836 0.18785364 0.13370761 0.0087023 ]
-[[0.55683367 0.86443784 0.35330648 0.65499197]
- [0.26496245 0.60154947 0.03765608 0.23176593]
- [0.6354948  0.46629516 0.34869501 0.68127864]]
+<pre><code>[0.96516288 0.24682269 0.66936546 0.85283307 0.47118698]
+[[0.59920682 0.40625209 0.18340696 0.90613633]
+ [0.10098238 0.0781746  0.02856576 0.85747123]
+ [0.47102612 0.38726455 0.4349197  0.63686956]]
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#从正态分布中返回随机生成的数组</span></span><br><span class="line">n=np.random.randn(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line">n=np.random.randn(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
-<pre><code>[-0.49223996  0.3717316   0.53850736  0.25744474  0.52837556]
-[[ 0.17611261  0.97443994  0.25204753 -1.52542036]
- [ 0.52917071  1.00475455 -1.76063736  0.67505152]
- [ 1.02348146 -1.05512522  0.97105148  1.1664663 ]]
+<pre><code>[ 0.74211452 -0.29730306 -1.16421314  1.81939644 -0.68400508]
+[[-2.17052662  0.25479841  0.91881829  0.96251497]
+ [-0.28614674 -1.8932509   2.58457647 -1.28645721]
+ [-0.02763578 -0.15577567 -0.74777201  1.12820765]]
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 生成一定范围内的随机数组</span></span><br><span class="line"><span class="comment"># 产生的数是正整数！！！</span></span><br><span class="line"><span class="comment"># low: int</span></span><br><span class="line"><span class="comment">#（high = None时，生成的数值要在[0, low)区间内）</span></span><br><span class="line"><span class="comment"># high: int (可选)</span></span><br><span class="line"><span class="comment"># size: int or tuple of ints(可选)</span></span><br><span class="line"><span class="comment"># dtype: dtype(可选)</span></span><br><span class="line">n=np.random.randint(<span class="number">1</span>,<span class="number">5</span>,(<span class="number">2</span>,<span class="number">4</span>))<span class="comment">#1-5左闭右开</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line">n=np.random.randint(<span class="number">5</span>,size=(<span class="number">2</span>,<span class="number">4</span>))<span class="comment"># 0-5左闭右开</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
-<pre><code>[[4 4 4 3]
- [2 4 2 3]]
-[[0 4 0 0]
- [1 2 4 2]]
+<pre><code>[[1 1 1 4]
+ [3 2 2 3]]
+[[0 2 4 1]
+ [3 4 3 4]]
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#生成正态分布的随机数</span></span><br><span class="line"><span class="comment">#可指定均值，标准差，维数！！</span></span><br><span class="line">n = np.random.normal(<span class="number">0</span>, <span class="number">0.1</span>, (<span class="number">3</span>,<span class="number">4</span>))<span class="comment">#(均值，标准差，维数)</span></span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
-<pre><code>[[-0.03057216  0.15825652  0.13127508  0.09910946]
- [ 0.18628363 -0.09262058 -0.06949188 -0.01391389]
- [ 0.06006604 -0.1182898  -0.127801   -0.15981339]]
-</code></pre><h4 id="根据已有数组创建"><a href="#根据已有数组创建" class="headerlink" title="根据已有数组创建"></a>根据已有数组创建</h4><p>1.由已有列表创建 $asarray()$</p>
+<pre><code>[[-0.10621183 -0.05465658  0.00068895  0.01082762]
+ [-0.09779584  0.1248368  -0.09974623  0.04407646]
+ [ 0.03004638 -0.03053372  0.02065726 -0.25012571]]
+</code></pre><h3 id="根据已有数组创建"><a href="#根据已有数组创建" class="headerlink" title="根据已有数组创建"></a>根据已有数组创建</h3><p>1.由已有列表创建 $asarray()$</p>
 <p>2.由已有列表形状创建 $zeros$<em>_$like$()/$ones$ </em> $like()$</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#asarray与array的区别</span></span><br><span class="line">a=[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">4</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">8</span>,<span class="number">7</span>]]</span><br><span class="line">temp = np.array(a)              <span class="comment">#通过列表创建数组</span></span><br><span class="line">n1= np.asarray(temp)</span><br><span class="line">n2= np.array(temp)</span><br><span class="line">n3= np.zeros_like(a)</span><br><span class="line">n4= np.ones_like(a)</span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n2)</span><br><span class="line"><span class="built_in">print</span>(n3)</span><br><span class="line"><span class="built_in">print</span>(n4)</span><br><span class="line">temp[<span class="number">0</span>]=<span class="number">2</span></span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n2)</span><br></pre></td></tr></table></figure>
 <pre><code>[[1 2 3]
@@ -266,28 +268,30 @@
 <p>5.$ndarry.T$    转置</p>
 <p>6.$ndarry.flat$  压平(并且支持切片压平)</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(n.shape)</span><br><span class="line"><span class="built_in">print</span>(n.dtype)</span><br><span class="line"><span class="built_in">print</span>(n.size)</span><br><span class="line"><span class="built_in">print</span>(n.ndim)</span><br><span class="line"><span class="built_in">print</span>(n.T)</span><br><span class="line"><span class="built_in">print</span>(n.flat[<span class="number">1</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
-<pre><code>[[-0.03057216  0.15825652  0.13127508  0.09910946]
- [ 0.18628363 -0.09262058 -0.06949188 -0.01391389]
- [ 0.06006604 -0.1182898  -0.127801   -0.15981339]]
+<pre><code>[[-0.10621183 -0.05465658  0.00068895  0.01082762]
+ [-0.09779584  0.1248368  -0.09974623  0.04407646]
+ [ 0.03004638 -0.03053372  0.02065726 -0.25012571]]
 (3, 4)
 float64
 12
 2
-[[-0.03057216  0.18628363  0.06006604]
- [ 0.15825652 -0.09262058 -0.1182898 ]
- [ 0.13127508 -0.06949188 -0.127801  ]
- [ 0.09910946 -0.01391389 -0.15981339]]
-[0.15825652 0.13127508]
+[[-0.10621183 -0.09779584  0.03004638]
+ [-0.05465658  0.1248368  -0.03053372]
+ [ 0.00068895 -0.09974623  0.02065726]
+ [ 0.01082762  0.04407646 -0.25012571]]
+[-0.05465658  0.00068895]
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n5=array(a)</span><br><span class="line"><span class="built_in">print</span>(n5)</span><br><span class="line"><span class="built_in">print</span>(n5.size)</span><br><span class="line"><span class="built_in">print</span>(n5.itemsize)</span><br><span class="line"><span class="built_in">print</span>(n5.nbytes)</span><br><span class="line"><span class="comment">##nbytes=size*itemsize</span></span><br></pre></td></tr></table></figure>
-<pre><code>[1 2 3]
-3
+<pre><code>[[1 2 3]
+ [2 4 3]
+ [2 8 7]]
+9
 4
-12
-</code></pre><h2 id="4-切片与索引"><a href="#4-切片与索引" class="headerlink" title="4.切片与索引"></a>4.切片与索引</h2><p>$ndarray$ 数组可以基于 $0$ 到 $len( ndarray ) - 1$的下标进行索引</p>
+36
+</code></pre><h2 id="4-切片与索引"><a href="#4-切片与索引" class="headerlink" title="4.切片与索引"></a>4.切片与索引</h2><h3 id="普通索引"><a href="#普通索引" class="headerlink" title="普通索引"></a>普通索引</h3><p>$ndarray$ 数组可以基于 $0$ 到 $len( ndarray ) - 1$的下标进行索引</p>
 <p>切片后,生成一个新的数组</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array01=np.arange(<span class="number">1</span>,<span class="number">8</span>)</span><br><span class="line">array02=array01[<span class="number">1</span>:<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(array01))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(array02))</span><br></pre></td></tr></table></figure>
-<pre><code>2657313373520
-2657313358352
+<pre><code>2416398960272
+2416398970640
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 二维数组的切片</span></span><br><span class="line">list02=[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>],[<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]</span><br><span class="line">array02=np.array(list02)</span><br><span class="line"><span class="built_in">print</span>(array02)</span><br><span class="line"><span class="built_in">print</span>(array02[<span class="number">0</span>:<span class="number">2</span>])<span class="comment">#只有一个数字默认为行数进行切片</span></span><br><span class="line"><span class="built_in">print</span>(array02[<span class="number">0</span>:<span class="number">2</span>,<span class="number">1</span>:<span class="number">3</span>])<span class="comment">#索引对象是数字！</span></span><br></pre></td></tr></table></figure>
 <pre><code>[[ 1  2  3  4]
  [ 5  6  7  8]
@@ -350,10 +354,10 @@ float64
  [13 12 14 13]]
 </code></pre><h2 id="5-数组操作"><a href="#5-数组操作" class="headerlink" title="5.数组操作"></a>5.数组操作</h2><p>1.数组形状修改 $np.shape()/np.resize()/naddary.flatten()/ndarray.reshape()/np.ravel$</p>
 <p>2.数组数值修改 (索引切片方式)</p>
-<p>3.添加/删除/裁剪 $np.append()/np.insert()//np.delete()//np.clip()$</p>
+<p>3.添加/删除/裁剪 $np.append()/np.insert()//np.delete()/np.clip()$</p>
 <p>4.数组去重 $numpy.unique()/$</p>
 <p>5.裁剪数组元素 $np.clip()$</p>
-<p>6.行列交换操作</p>
+<p>6.行列交换操作 $t[[x,y],:]=t[[y,x],:]$</p>
 <p>7.数组转置 $ndarray.T$</p>
 <p>8.迭代数组 $for$</p>
 <p>9.连接数组 $np.concatenate()/np.stack()$</p>
@@ -372,7 +376,7 @@ None
 <pre><code>[[ 0  1  2  3  4  5  6  7  8  9]
  [10 11 12 13 14 15 16 17 18 19]]
 [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19]
-&lt;numpy.flatiter object at 0x0000026AB3BA4F20&gt;
+&lt;numpy.flatiter object at 0x000002329C09E390&gt;
 [2 3 4 5]
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数组形状修改之视图变维 naddary.reshape()/np.ravel</span></span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n1.reshape(<span class="number">4</span>,<span class="number">5</span>))</span><br><span class="line"><span class="built_in">print</span>(np.ravel(n1,order=<span class="string">&quot;C&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(np.ravel(n1,order=<span class="string">&quot;F&quot;</span>))<span class="comment">#返回副本并不对n1进行改变</span></span><br></pre></td></tr></table></figure>
 <pre><code>[[ 0  1  2  3  4  5  6  7  8  9]
@@ -408,17 +412,17 @@ None
  [0 0 0 0 0 0]
  [0 0 0 0 0 0]
  [0 0 0 0 0 0]]
-</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#存疑#数组的添加 np.append()</span></span><br><span class="line"><span class="comment">#一维添加</span></span><br><span class="line">array01 = np.arange(<span class="number">8</span>).reshape(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(array01)</span><br><span class="line">array02=np.append(array01,<span class="number">20</span>)</span><br><span class="line"><span class="built_in">print</span>(array02)</span><br><span class="line">array01 = np.arange(<span class="number">8</span>).reshape(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(array01)</span><br><span class="line">array02=np.append(array01,<span class="number">20</span>)</span><br><span class="line"><span class="built_in">print</span>(array02)</span><br><span class="line">array01 = np.arange(<span class="number">8</span>).reshape(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(array01)</span><br><span class="line">array02=np.append(array01,<span class="number">20</span>)</span><br><span class="line"><span class="built_in">print</span>(array02)</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数组的添加 np.append()</span></span><br><span class="line"><span class="comment">#一维添加</span></span><br><span class="line">array01 = np.arange(<span class="number">8</span>).reshape(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(array01)</span><br><span class="line"><span class="comment"># 加单个数字就展开</span></span><br><span class="line">array02=np.append(array01,<span class="number">20</span>)</span><br><span class="line"><span class="built_in">print</span>(array02)</span><br><span class="line"><span class="comment"># 若不同维，则必须相同shape,此时即可指定维数(axis=?)</span></span><br><span class="line">array02=np.arange(<span class="number">8</span>).reshape(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">array03=np.append(array01,array02,axis=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(array03)</span><br><span class="line">array03=np.append(array01,array02,axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(array03)</span><br></pre></td></tr></table></figure>
 <pre><code>[[0 1 2 3]
  [4 5 6 7]]
 [ 0  1  2  3  4  5  6  7 20]
 [[0 1 2 3]
+ [4 5 6 7]
+ [0 1 2 3]
  [4 5 6 7]]
-[ 0  1  2  3  4  5  6  7 20]
-[[0 1 2 3]
- [4 5 6 7]]
-[ 0  1  2  3  4  5  6  7 20]
-</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#添加数组元素 insert()</span></span><br><span class="line">array01 = np.arange(<span class="number">8</span>).reshape(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">array02=np.arange(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(array01)</span><br><span class="line">array03=np.insert(array01,<span class="number">1</span>,array02,axis=<span class="number">0</span>)<span class="comment">#axis=0时为按行插入，要求行数相同</span></span><br><span class="line"><span class="built_in">print</span>(array03)</span><br><span class="line">array02=np.arange(<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(array01)</span><br><span class="line">array03=np.insert(array01,<span class="number">2</span>,array02,axis=<span class="number">1</span>)<span class="comment">#axis=1时为按列插入，要求列数相同</span></span><br><span class="line"><span class="built_in">print</span>(array03)</span><br></pre></td></tr></table></figure>
+[[0 1 2 3 0 1 2 3]
+ [4 5 6 7 4 5 6 7]]
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#添加数组元素 insert()</span></span><br><span class="line"><span class="comment">#相比append条件更加宽松</span></span><br><span class="line">array01 = np.arange(<span class="number">8</span>).reshape(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">array02=np.arange(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(array01)</span><br><span class="line">array03=np.insert(array01,<span class="number">1</span>,array02,axis=<span class="number">0</span>)<span class="comment">#axis=0时为按行插入，要求行数相同</span></span><br><span class="line"><span class="built_in">print</span>(array03)</span><br><span class="line">array02=np.arange(<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(array01)</span><br><span class="line">array03=np.insert(array01,<span class="number">2</span>,array02,axis=<span class="number">1</span>)<span class="comment">#axis=1时为按列插入，要求列数相同</span></span><br><span class="line"><span class="built_in">print</span>(array03)</span><br></pre></td></tr></table></figure>
 <pre><code>[[0 1 2 3]
  [4 5 6 7]]
 [[0 1 2 3]
@@ -519,7 +523,7 @@ None
 <p>• 字符串函数</p>
 <p>• 排序函数</p>
 <p>• 条件筛选函数</p>
-<h5 id="广播机制"><a href="#广播机制" class="headerlink" title="广播机制"></a>广播机制</h5><p> 1.数组+数字</p>
+<h3 id="广播机制"><a href="#广播机制" class="headerlink" title="广播机制"></a>广播机制</h3><p> 1.数组+数字</p>
 <p> 2.一维数组+二维数组(列数相同，行数不同) </p>
 <p> 3.二维数组+二维数组(行数相同，列数不同)</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line">n1=np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">n2=np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n2)</span><br><span class="line"><span class="built_in">print</span>(n1+n2)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">n3=np.arange(<span class="number">4</span>)</span><br><span class="line">n4=np.arange(<span class="number">3</span>).reshape(<span class="number">3</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(n1)</span><br><span class="line"><span class="built_in">print</span>(n3)</span><br><span class="line"><span class="built_in">print</span>(n4)</span><br><span class="line"><span class="built_in">print</span>(n1+n3)</span><br><span class="line"><span class="built_in">print</span>(n1+n4)</span><br></pre></td></tr></table></figure>
@@ -545,9 +549,9 @@ None
 [[ 0  1  2  3]
  [ 5  6  7  8]
  [10 11 12 13]]
-</code></pre><h5 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h5><p> 1.a*b 数组的乘积(对应位置相乘)</p>
-<p> 2.a@b 矩阵乘积</p>
-<p> 3.a.dot(b) 矩阵的乘法</p>
+</code></pre><h3 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h3><p> 1.$a*b$ 数组的乘积(对应位置相乘)</p>
+<p> 2.$a@b$ 矩阵乘积</p>
+<p> 3.$a.dot(b)$ 矩阵的乘法</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line">b = np.array([[<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>]])</span><br><span class="line"><span class="built_in">print</span>(a*b)<span class="comment">#数组对应元素相乘</span></span><br><span class="line"><span class="built_in">print</span>(a@b)<span class="comment">#矩阵相乘</span></span><br><span class="line"><span class="built_in">print</span>(a.dot(b))<span class="comment">#矩阵相乘</span></span><br></pre></td></tr></table></figure>
 <pre><code>[[ 5 12]
  [21 32]]
@@ -555,8 +559,8 @@ None
  [43 50]]
 [[19 22]
  [43 50]]
-</code></pre><h5 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h5><p> 1.三角函数 $sin()/cos()$</p>
-<p> 2.四舍五入函数 np.around(<strong>decimals=(int)</strong>)/向下取整np.floor()/向上取整 np.ceil()</p>
+</code></pre><h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p> 1.三角函数 $sin()/cos()$</p>
+<p> 2.四舍五入函数 $np.around(decimals=(int))$/向下取整$np.floor()$/向上取整 $np.ceil()$</p>
 <p> 3.算术运算(数组的加减乘除)</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(cos(<span class="number">0</span>))<span class="comment">#返回浮点数类型</span></span><br><span class="line"><span class="built_in">print</span>(sin(np.pi/<span class="number">2</span>))</span><br><span class="line">n = np.arange(<span class="number">6</span>,dtype=np.float_).reshape(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line">a = np.array([<span class="number">1.0</span>,<span class="number">5.55</span>,<span class="number">12.9</span>,<span class="number">0.567</span>])</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(np.around(a))            <span class="comment">#以小数点为基准</span></span><br><span class="line"><span class="built_in">print</span>(np.around(a,decimals=<span class="number">1</span>)) <span class="comment">#对小数点右一位</span></span><br><span class="line"><span class="built_in">print</span>(np.around(a,decimals=-<span class="number">1</span>))<span class="comment">#对小数点左一位</span></span><br></pre></td></tr></table></figure>
 <pre><code>1.0
@@ -567,7 +571,7 @@ None
 [ 1.  6. 13.  1.]
 [ 1.   5.6 12.9  0.6]
 [ 0. 10. 10.  0.]
-</code></pre><h5 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h5><p>• 最大值/最小值：$np.max()/np.min()$</p>
+</code></pre><h3 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h3><p>• 最大值/最小值：$np.max()/np.min()$</p>
 <p>• 极值：$np.ptp()$</p>
 <p>• 中位数：$np.median()$</p>
 <p>• 求和：$np. sum()$</p>
@@ -588,7 +592,7 @@ None
  [3 4 5]]
 [[0 1 2]]
 1.4615384615384617
-</code></pre><h5 id="排序函数"><a href="#排序函数" class="headerlink" title="排序函数"></a>排序函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># numpy.sort()</span></span><br><span class="line"><span class="comment"># 特点:沿最后的轴排序</span></span><br><span class="line">a=np.array([[<span class="number">3</span>,<span class="number">7</span>],[<span class="number">9</span>,<span class="number">1</span>]])</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(np.sort(a))</span><br><span class="line"><span class="built_in">print</span>(np.sort(a,<span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(np.sort(a,<span class="number">0</span>))</span><br><span class="line"><span class="comment"># numpy.argsort()</span></span><br><span class="line"><span class="comment"># 返回将对数组进行排序的索引</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">b=np.argsort(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(a[b])</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="排序函数"><a href="#排序函数" class="headerlink" title="排序函数"></a>排序函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># numpy.sort()</span></span><br><span class="line"><span class="comment"># 特点:沿最后的轴排序</span></span><br><span class="line">a=np.array([[<span class="number">3</span>,<span class="number">7</span>],[<span class="number">9</span>,<span class="number">1</span>]])</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(np.sort(a))</span><br><span class="line"><span class="built_in">print</span>(np.sort(a,<span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(np.sort(a,<span class="number">0</span>))</span><br><span class="line"><span class="comment"># numpy.argsort()</span></span><br><span class="line"><span class="comment"># 返回将对数组进行排序的索引</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">b=np.argsort(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(a[b])</span><br></pre></td></tr></table></figure>
 <pre><code>[[3 7]
  [9 1]]
 [[3 7]
@@ -606,7 +610,7 @@ None
 
  [[9 1]
   [3 7]]]
-</code></pre><h5 id="条件筛选函数"><a href="#条件筛选函数" class="headerlink" title="条件筛选函数"></a>条件筛选函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(np.argmax(a,axis=<span class="number">1</span>))<span class="comment">#按列方向</span></span><br><span class="line"><span class="built_in">print</span>(np.argmax(a,axis=<span class="number">0</span>))<span class="comment">#按行方向</span></span><br><span class="line"><span class="comment"># 返回满足指定条件的元素下标</span></span><br><span class="line"><span class="comment"># print(np.where(a&gt;2),x,y) #若指定条件，满足则返回x，不满足则返回y</span></span><br><span class="line"><span class="built_in">print</span>(np.where(a&gt;<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="条件筛选函数"><a href="#条件筛选函数" class="headerlink" title="条件筛选函数"></a>条件筛选函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(np.argmax(a,axis=<span class="number">1</span>))<span class="comment">#按列方向</span></span><br><span class="line"><span class="built_in">print</span>(np.argmax(a,axis=<span class="number">0</span>))<span class="comment">#按行方向</span></span><br><span class="line"><span class="comment"># 返回满足指定条件的元素下标</span></span><br><span class="line"><span class="comment"># print(np.where(a&gt;2),x,y) #若指定条件，满足则返回x，不满足则返回y</span></span><br><span class="line"><span class="built_in">print</span>(np.where(a&gt;<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
 <pre><code>[[3 7]
  [9 1]]
 [1 0]
@@ -614,12 +618,12 @@ None
 (array([0, 0, 1], dtype=int64), array([0, 1, 0], dtype=int64))
 </code></pre><h2 id="7-视图与副本"><a href="#7-视图与副本" class="headerlink" title="7.视图与副本"></a>7.视图与副本</h2><p>即关于复制的深浅问题</p>
 <p>1.深复制(直接赋值)</p>
-<p>2.浅复制(ndarray.copy()/ndarray.view())</p>
+<p>2.浅复制($ndarray.copy()$/$ndarray.view()$)</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array01=np.arange(<span class="number">6</span>).reshape(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">array02=array01 <span class="comment">#相当于c++当中创建了一个引用</span></span><br><span class="line">array03=array01.view()</span><br><span class="line">array04=array01.copy()</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(array01))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(array02))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(array03))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(array04))</span><br><span class="line">array03.shape=(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">array04.shape=(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(array03)</span><br><span class="line"><span class="built_in">print</span>(array04)</span><br><span class="line"><span class="built_in">print</span>(array01)<span class="comment">#不改变原有</span></span><br><span class="line">array02.shape=(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(array02)</span><br><span class="line"><span class="built_in">print</span>(array01)<span class="comment">#改变原有</span></span><br></pre></td></tr></table></figure>
-<pre><code>2657313552016
-2657313552016
-2657313372368
-2657313600112
+<pre><code>2416398891312
+2416398891312
+2416398920624
+2416398920720
 [[0 1]
  [2 3]
  [4 5]]
