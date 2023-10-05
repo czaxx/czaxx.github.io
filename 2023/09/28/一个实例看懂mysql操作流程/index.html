@@ -20,20 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="被鼓励写写题解，在混沌之中简单写写思路，题目数量不定，看到其他平台的也会放上来，不局限与题单 题单链接：洛谷带刷100题（1~50） - 题单 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn) (">
+  <meta name="description" content="在写这篇文章时，我感觉之前学的一些mysql基础操作只浮于表面，只告诉你了可以怎么做，但是没有教会你应该怎么做，本文将从学生成绩表这个切入点开始，从基本配置到增删改查到各类选择，学生党比较忙，尽力更新....">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷被带刷100题第一期">
-<meta property="og:url" content="http://example.com/2023/07/15/%E6%B4%9B%E8%B0%B7%E8%A2%AB%E5%B8%A6%E5%88%B7100%E9%A2%98%E7%AC%AC%E4%B8%80%E6%9C%9F/index.html">
+<meta property="og:title" content="一个实例看懂mysql操作流程">
+<meta property="og:url" content="http://example.com/2023/09/28/%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E7%9C%8B%E6%87%82mysql%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Vera-Blog">
-<meta property="og:description" content="被鼓励写写题解，在混沌之中简单写写思路，题目数量不定，看到其他平台的也会放上来，不局限与题单 题单链接：洛谷带刷100题（1~50） - 题单 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn) (">
+<meta property="og:description" content="在写这篇文章时，我感觉之前学的一些mysql基础操作只浮于表面，只告诉你了可以怎么做，但是没有教会你应该怎么做，本文将从学生成绩表这个切入点开始，从基本配置到增删改查到各类选择，学生党比较忙，尽力更新....">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-15T06:48:26.000Z">
-<meta property="article:modified_time" content="2023-09-02T02:48:55.637Z">
+<meta property="article:published_time" content="2023-09-28T06:53:33.000Z">
+<meta property="article:modified_time" content="2023-10-05T01:21:38.300Z">
 <meta property="article:author" content="Vera">
-<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2023/07/15/%E6%B4%9B%E8%B0%B7%E8%A2%AB%E5%B8%A6%E5%88%B7100%E9%A2%98%E7%AC%AC%E4%B8%80%E6%9C%9F/">
+<link rel="canonical" href="http://example.com/2023/09/28/%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E7%9C%8B%E6%87%82mysql%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -46,7 +45,7 @@
   };
 </script>
 
-  <title>洛谷被带刷100题第一期 | Vera-Blog</title>
+  <title>一个实例看懂mysql操作流程 | Vera-Blog</title>
   
 
 
@@ -193,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/15/%E6%B4%9B%E8%B0%B7%E8%A2%AB%E5%B8%A6%E5%88%B7100%E9%A2%98%E7%AC%AC%E4%B8%80%E6%9C%9F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/28/%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E7%9C%8B%E6%87%82mysql%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -206,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          洛谷被带刷100题第一期
+          一个实例看懂mysql操作流程
         </h1>
 
         <div class="post-meta">
@@ -216,14 +215,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-07-15 14:48:26" itemprop="dateCreated datePublished" datetime="2023-07-15T14:48:26+08:00">2023-07-15</time>
+              <time title="创建时间：2023-09-28 14:53:33" itemprop="dateCreated datePublished" datetime="2023-09-28T14:53:33+08:00">2023-09-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-02 10:48:55" itemprop="dateModified" datetime="2023-09-02T10:48:55+08:00">2023-09-02</time>
+                <time title="修改时间：2023-10-05 09:21:38" itemprop="dateModified" datetime="2023-10-05T09:21:38+08:00">2023-10-05</time>
               </span>
 
           
@@ -237,23 +236,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>被鼓励写写题解，在混沌之中简单写写思路，题目数量不定，看到其他平台的也会放上来，不局限与题单</p>
-<p>题单链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/367773#problems">洛谷带刷100题（1~50） - 题单 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></p>
-<p>(<span id="more"></span></p>
-<h1 id="洛谷被带刷100题1"><a class="markdownIt-Anchor" href="#洛谷被带刷100题1"></a> 洛谷被带刷100题#1</h1>
-<h2 id="p1002-过河卒"><a class="markdownIt-Anchor" href="#p1002-过河卒"></a> P1002 过河卒</h2>
-<p><code>dp</code>做法：把棋盘向右下移动一格，然后初始化<code>dp[1][1]=1</code>,以及遇到马所在点和马控制点<code>dp[i][j]=0</code>就<code>continue</code>掉，再去更新<code>dp[i][j]=dp[i-1][j]+dp[i][j-1]</code>即可</p>
-<p>记得写偏移量数组<code>dx[]=&#123;-2,-1,1,2,2,1,-1,-2,0&#125;,dy[]=&#123;1,2,2,1,-1,-2,-2,-1,0&#125;</code>和开<code>LL</code></p>
-<h2 id="p1003-铺地毯"><a class="markdownIt-Anchor" href="#p1003-铺地毯"></a> P1003 铺地毯</h2>
-<p>一开始傻啦吧唧的看到就是一个前缀和，但是题目问的是地毯编号，所以从后往前扫一遍就好了</p>
-<h2 id="p1008-三连击"><a class="markdownIt-Anchor" href="#p1008-三连击"></a> P1008 三连击</h2>
-<p>设<code>x,2*x,3*x</code>再判断是否符合条件</p>
-<h2 id="p1028-数的计算"><a class="markdownIt-Anchor" href="#p1028-数的计算"></a> P1028 数的计算</h2>
-<p><em>递推</em> 较为简单 初始化<code>f[1]=1</code>(注意不要被更新掉)，若为偶数<code>f[i]=f[i-1]+f[i/2]</code>，若为奇数<code>f[i]=f[i-1]</code></p>
-<p><em>记忆化搜索</em>  搜了好久是个啥玩意，感觉跟递推好像，看到网上佬这样描述 <code>dp</code>是一种算法，有记忆化搜索和递推两种表达形式，其中记忆化搜索从上往下，递推从下往上，记忆化搜索其实还是把数存在数组里，用递归的方式，若被更新过就直接取用，若未被更新过就更新,这里贴一下代码，思路跟递推一样的</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fun</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[n]) <span class="keyword">return</span> f[n];</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			f[n]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">fun</span>(n<span class="number">-1</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">0</span>) f[n]=<span class="built_in">fun</span>(n<span class="number">-1</span>)+<span class="built_in">fun</span>(n/<span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> f[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="p1029最大公约数和最小公倍数问题"><a class="markdownIt-Anchor" href="#p1029最大公约数和最小公倍数问题"></a> P1029最大公约数和最小公倍数问题</h2>
-<p>记得用<code>__gcd(a,b)</code></p>
+        <p>在写这篇文章时，我感觉之前学的一些<code>mysql</code>基础操作只浮于表面，只告诉你了可以怎么做，但是没有教会你应该怎么做，本文将从学生成绩表这个切入点开始，从基本配置到增删改查到各类选择，学生党比较忙，尽力更新....</p>
+<span id="more"></span>
+<h1 id="一个实例看懂mysql操作流程"><a class="markdownIt-Anchor" href="#一个实例看懂mysql操作流程"></a> 一个实例看懂MySql操作流程</h1>
+<h2 id="初始准备"><a class="markdownIt-Anchor" href="#初始准备"></a> 初始准备</h2>
+<h3 id="查看配置文件myini"><a class="markdownIt-Anchor" href="#查看配置文件myini"></a> 查看配置文件my.ini</h3>
+<p>在这里可以配置mysql的很多东西，一般在mysql的安装路径下，在这里提几个重要的</p>
+<h4 id="端口"><a class="markdownIt-Anchor" href="#端口"></a> 端口</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port<span class="operator">=</span><span class="number">3306</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3306为默认端口；</p>
+<p>本地和远程连接协议：TCP/IP</p>
+</blockquote>
+<p>如果提示3306端口已被占用</p>
+<p>方法一:</p>
+<ul>
+<li>使用<code>netstat -ano</code>查看所有连接的端口占用情况及PID</li>
+<li>在任务管理器中找到这个PID所对应的程序</li>
+</ul>
+<p>方法二:</p>
+<p><code>netstat -aon|findstr &quot;3306&quot;</code>找到tening, 后<code>tasklist|findstr &quot;tening&quot;</code>找到对应占着的程序</p>
+<h4 id="mysql安装目录与数据存放目录"><a class="markdownIt-Anchor" href="#mysql安装目录与数据存放目录"></a> mysql安装目录与数据存放目录</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">basedir<span class="operator">=</span>&quot;C:/Program Files/MySQL/MySQL Server 8.0/&quot;</span><br><span class="line">datadir<span class="operator">=</span>C:<span class="operator">/</span>ProgramData<span class="operator">/</span>MySQL<span class="operator">/</span>MySQL Server <span class="number">8.0</span>\Data</span><br></pre></td></tr></table></figure>
+<p>此外,你还可以在这里找到,允许最大连接次数,允许连接失败的最大连接数,默认字符集,默认存储引擎等等</p>
+<h3 id="环境变量的配置"><a class="markdownIt-Anchor" href="#环境变量的配置"></a> 环境变量的配置</h3>
+<p>啊,这个网上教程太多了,这里不多加赘述</p>
+<p>判断环境变量是否配好的方式是...查看是否能够接入mysql服务QAQ</p>
+<p>首先,我们进入安装目录下的bin,打开命令行,如果命令行打开失败,记得<strong>以管理员权限</strong>打开命令行</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root –p</span><br></pre></td></tr></table></figure>
+<p>若成功出现输入密码等,则配置成功</p>
+<h3 id="忘了密码怎么办"><a class="markdownIt-Anchor" href="#忘了密码怎么办"></a> 忘了密码怎么办</h3>
+<p>我第一次也一脸懵,看到繁琐的操作十分后悔自己没把密码记下来的愚蠢操作</p>
+<p>但其实并不复杂QAQ,网上教程很多,这里贴上我使用的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1F24y1Q7JX/?spm_id_from=333.337.search-card.all.click">MySQL密码忘了解决方案_哔哩哔哩_bilibili</a></p>
+<p>大概操作是关闭mysql服务,在配置文件取消密码,然后登陆后重设密码这一套逻辑</p>
+<h3 id="连接mysql"><a class="markdownIt-Anchor" href="#连接mysql"></a> 连接mysql</h3>
+<p><strong>以管理员权限</strong>打开命令行:</p>
+<ul>
+<li>连接本地:<code>mysql -u root –p</code></li>
+<li>连接远程
+我还未尝试,等会试一下</li>
+</ul>
+<h2 id="趋势云数据库"><a class="markdownIt-Anchor" href="#趋势云数据库"></a> 趋势:云数据库</h2>
+<p>在本地也可以连接,非常好</p>
+<p>mysql -uroot -p --default-character-set=utf8mb4  &lt; D:\aliases.sql</p>
+<p>mysql -uroot -p<password> --default-character-set=utf8mb4 -h &lt;host_name&gt; -P &lt;port_number&gt; &lt;database_name&gt; &lt; D:\aliases.sql</p>
 
     </div>
 
@@ -262,9 +288,6 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
-          </div>
 
         
 
@@ -272,13 +295,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/07/15/Git/" rel="prev" title="Git">
-      <i class="fa fa-chevron-left"></i> Git
+    <a href="/2023/09/15/Pandas/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/07/15/MySQL/" rel="next" title="MySQL">
-      MySQL <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -337,7 +357,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B4%9B%E8%B0%B7%E8%A2%AB%E5%B8%A6%E5%88%B7100%E9%A2%981"><span class="nav-number">1.</span> <span class="nav-text"> 洛谷被带刷100题#1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1002-%E8%BF%87%E6%B2%B3%E5%8D%92"><span class="nav-number">1.1.</span> <span class="nav-text"> P1002 过河卒</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1003-%E9%93%BA%E5%9C%B0%E6%AF%AF"><span class="nav-number">1.2.</span> <span class="nav-text"> P1003 铺地毯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1008-%E4%B8%89%E8%BF%9E%E5%87%BB"><span class="nav-number">1.3.</span> <span class="nav-text"> P1008 三连击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1028-%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">1.4.</span> <span class="nav-text"> P1028 数的计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1029%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text"> P1029最大公约数和最小公倍数问题</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E7%9C%8B%E6%87%82mysql%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text"> 一个实例看懂MySql操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%87%86%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text"> 初始准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6myini"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 查看配置文件my.ini</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%AD%98%E6%94%BE%E7%9B%AE%E5%BD%95"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> mysql安装目录与数据存放目录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 环境变量的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%98%E4%BA%86%E5%AF%86%E7%A0%81%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-number">1.1.3.</span> <span class="nav-text"> 忘了密码怎么办</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5mysql"><span class="nav-number">1.1.4.</span> <span class="nav-text"> 连接mysql</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B6%8B%E5%8A%BF%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text"> 趋势:云数据库</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
