@@ -20,19 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Pandas 更新中....感觉跟数据库的操作无异，更完数据库再回来更新">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Vera-Blog">
-<meta property="og:url" content="http://example.com/2023/09/15/Pandas/index.html">
+<meta property="og:url" content="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Vera-Blog">
-<meta property="og:description" content="Pandas 更新中....感觉跟数据库的操作无异，更完数据库再回来更新">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-15T07:24:18.388Z">
-<meta property="article:modified_time" content="2023-10-05T01:22:57.797Z">
 <meta property="article:author" content="Vera">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2023/09/15/Pandas/">
+<link rel="canonical" href="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
 
 
 <script id="page-configurations">
@@ -40,12 +36,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title> | Vera-Blog</title>
+  <title>标签: 数据分析 | Vera-Blog</title>
   
 
 
@@ -185,129 +181,51 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content tag">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/15/Pandas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Vera">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vera-Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-09-15 15:24:18" itemprop="dateCreated datePublished" datetime="2023-09-15T15:24:18+08:00">2023-09-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-05 09:22:57" itemprop="dateModified" datetime="2023-10-05T09:22:57+08:00">2023-10-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h2 class="collection-header">数据分析
+          <small>标签</small>
+        </h2>
+      </div>
 
       
-        <h1 id="pandas"><a class="markdownIt-Anchor" href="#pandas"></a> Pandas</h1>
-<p>更新中....感觉跟数据库的操作无异，更完数据库再回来更新</p>
-<span id="more"></span>
-<p>导入<code>import pandas as pd</code></p>
-<h2 id="数据类型"><a class="markdownIt-Anchor" href="#数据类型"></a> 数据类型</h2>
-<h3 id="series"><a class="markdownIt-Anchor" href="#series"></a> Series</h3>
-<p>组成：由两部分组成，一个是<code>value</code>,一个是<code>index</code></p>
-<p><strong><code>value</code>即源数据</strong></p>
-<ul>
-<li><code>python</code>字典</li>
-<li>多维数组</li>
-<li>标量值（即单个数字）</li>
-</ul>
-<p><strong><code>index</code>即轴标签列表</strong></p>
-<blockquote>
-<p>index 长度需与data一致，没有指定index时，创建数值型索引-&gt;[0,...,len(data)-1]
-pandas 值索引可以重复</p>
-</blockquote>
-<h4 id="实例"><a class="markdownIt-Anchor" href="#实例"></a> 实例</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 用numpy数组建立</span></span><br><span class="line">s1=pd.Series(np.random.randn(<span class="number">5</span>),index=&#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(s1)</span><br><span class="line">s1=pd.Series(np.random.randn(<span class="number">5</span>))<span class="comment"># 无索引以数字为索引</span></span><br><span class="line"><span class="built_in">print</span>(s1)</span><br><span class="line"><span class="comment"># 用字典创立</span></span><br><span class="line">dictionary=&#123;<span class="string">&#x27;b&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;a&#x27;</span>:<span class="number">0</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">2</span>&#125;</span><br><span class="line">s2=pd.Series(dictionary)</span><br><span class="line"><span class="built_in">print</span>(s2)</span><br><span class="line">dictionary=&#123;<span class="string">&#x27;b&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;a&#x27;</span>:<span class="number">0</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">2</span>&#125;</span><br><span class="line">s2=pd.Series(dictionary,index=[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment"># 缺失值用NAN代替</span></span><br><span class="line"><span class="built_in">print</span>(s2)</span><br></pre></td></tr></table></figure>
-<h4 id="series的基础操作"><a class="markdownIt-Anchor" href="#series的基础操作"></a> Series的基础操作</h4>
-<ul>
-<li>索引切片: 与<code>numpy</code>差不多，贴连接<a target="_blank" rel="noopener" href="https://czaxx.github.io/2023/07/08/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BNumpy/">数据分析之Numpy | Vera-Blog (czaxx.github.io)</a></li>
-<li>支持<code>dtype</code></li>
-<li>可以取值<code>Series.values</code>和<code>Series.index</code></li>
-<li>可以直接索引值<code>s['a']</code>，若没有此标签，会触发异常，或者指定默认值，<code>s.get('a',np.nan)</code></li>
-<li>支持<code>name</code>属性+<code>rename</code>操作</li>
-</ul>
-<h3 id="dataframe"><a class="markdownIt-Anchor" href="#dataframe"></a> Dataframe</h3>
-<p>二维表标签数据结构</p>
-<p><strong>支持多种数据类型的输入</strong></p>
-<ul>
-<li>一维<code>ndarray</code>,列表，字典，<code>Series</code>字典</li>
-<li>二维<code>numpy.ndarray</code></li>
-<li>结构多维数组或记录多维数组</li>
-<li><code>Series</code></li>
-<li><code>DataFrame</code></li>
-</ul>
-<p><strong>&lt;选择性输入&gt;</strong></p>
-<ul>
-<li>行标签：<code>index</code></li>
-<li>列标签：<code>columns</code></li>
-</ul>
-<p>举例：用<code>Series</code>字典或字典生成<code>DataFrame</code></p>
-
+    <div class="collection-year">
+      <span class="collection-header">2023</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2023-07-15T14:48:26+08:00"
+              content="2023-07-15">
+          07-15
+        </time>
+      </div>
 
-        
+      <div class="post-title">
+          <a class="post-title-link" href="/2023/07/15/Pandas/" itemprop="url">
+            <span itemprop="name">Pandas</span>
+          </a>
+      </div>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2023/07/15/MySQL/" rel="prev" title="MySQL">
-      <i class="fa fa-chevron-left"></i> MySQL
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/09/28/%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E7%9C%8B%E6%87%82mysql%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B/" rel="next" title="一个实例看懂mysql操作流程">
-      一个实例看懂mysql操作流程 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -360,7 +278,6 @@ pandas 值索引可以重复</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pandas"><span class="nav-number">1.</span> <span class="nav-text"> Pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text"> 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#series"><span class="nav-number">1.1.1.</span> <span class="nav-text"> Series</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#series%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> Series的基础操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dataframe"><span class="nav-number">1.1.2.</span> <span class="nav-text"> Dataframe</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -381,7 +298,7 @@ pandas 值索引可以重复</p>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
